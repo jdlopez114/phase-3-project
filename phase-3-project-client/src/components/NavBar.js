@@ -20,7 +20,7 @@ function NavBar() {
     </div>
 
   return (
-    <div>{NavBar}</div>
+    <div>{ NavBar }</div>
   )
 }
 

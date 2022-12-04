@@ -1,26 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function PageCard({ displayData }) {
 
-  const { title , images, url } = displayData
+  const { title_english , images, url, mal_id } = displayData
 
   return (
-    <article  className='anime-card'>
-      <a 
-        href={ url }
-        target="_blank"
-        rel="noreferrer"
-        >
+    <article  className='anime-card' >
+        <Link to={ `/${mal_id}` }>
         <figure>
           <img
             src={ images.jpg.image_url }
-            alt="Anime Image"
+            alt="Anime"
           />
         </figure>
         <h2>
-          { title }
+          { title_english }
         </h2>
-      </a>
+        </Link>
     </article>
   )
 }
