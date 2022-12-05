@@ -5,7 +5,7 @@ function MainPage({ displayData}) {
 
   return (
     <div>
-      <PageCollection displayData={displayData}/> 
+      <PageCollection displayData={ displayData }/> 
     </div>
   )
 }

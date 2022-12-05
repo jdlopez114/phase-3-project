@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function PageCard({ displayData }) {
 
-  const { title_english , images, url, mal_id } = displayData
+  const { rank, title_english , images, url, mal_id } = displayData
 
   return (
     <article  className='anime-card' >
@@ -14,9 +14,10 @@ function PageCard({ displayData }) {
             alt="Anime"
           />
         </figure>
-        <h2>
+        <h3>
+          { rank }:
           { title_english }
-        </h2>
+        </h3>
         </Link>
     </article>
   )

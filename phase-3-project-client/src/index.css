@@ -25,7 +25,6 @@ strong {
 	display: flex;
 }
 
-
 aside {
 	flex: 1 1 250px;
 	max-width: 250px;
@@ -43,28 +42,20 @@ h3 {
 	margin-bottom: 16px;
 }
 
-a {
-	display: block;
-	padding: 8px 16px;
-	text-align: left;
-
-	color: #888;
-	font-size: 16px;
-	margin-bottom: 16px;
-
-	background-color: #EEE;
-	border-radius: 999px;
+a{
+	position: relative;
 	text-decoration: none;
-
-	transition: 0.4s;
+	font-family: 'Poppins', sans-serif;
+	color: #a0a0a0;
+	font-size: 18px;
+	letter-spacing: 0.5px;
+	padding: 0 10px;
 }
 
-/* :hover {
+a :hover {
 	background-color: #313131;
 	color: #AAA;
-} */
-			
-		
+}
 
 main {
 	flex: 1 1 0%;
@@ -74,12 +65,6 @@ main {
 .main-head {
 	display: flex;
 	justify-content: flex-end;
-}
-
-.search-box {
-	display: flex;
-	justify-content: flex-end;
-	flex: 1 1 0%;
 }
 
 input {
@@ -110,18 +95,17 @@ input {
 .anime-list {
 	display: flex;
 	flex-wrap: wrap;
+	padding:20px;
 	margin-top: 32px;
 	margin: 32px -8px 0px;
 }
 
-.anime-card {
-	flex: 1 1 33.333%;
-	max-width: 33.333%;
-	padding: 16px 8px;
+.anime-details{
+    padding: 20px;
 }
 
-a {
-	text-decoration: none;
+.anime-content{
+	width: 250px;
 }
 
 figure {
@@ -131,27 +115,17 @@ figure {
 
 img {
 	display: block;
-	width: 100%;
+	width: 250px;
 	height: 350px;
 	object-fit: cover;
 	border-radius: 16px;
 	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-
+	padding: 10px;
 	transition: 0.4s;
-}
-				
+}			
 
-h3 {
-	color: #313131;
+.anime-card {
+	width: 250px;
+	padding: 20px;
 }
-
-/* :hover {
-	figure {
-		img {
-			box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
-			transform: scale(1.05);
-		}
-	}
-}
-*/
 
