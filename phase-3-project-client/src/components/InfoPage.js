@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ReviewPage from './ReviewPage';
+import Reviews from './Reviews';
 import useFetch from "./useFetch";
 
 function InfoPage() {
@@ -26,7 +26,7 @@ const { data, error, isPending } = useFetch(`https://api.jikan.moe/v4/anime/${ma
 //   )
 console.log(data)
 return (
-    <div> 
+    <> 
     <aside>
         <div className="anime-details">
         { isPending && <div>Loading...</div> }
@@ -50,8 +50,10 @@ return (
         )}
         </div>
     </aside>
-    <ReviewPage/>
+    <div className="reviews-container"> 
+    <Reviews/>
     </div>
+    </>
   );
 
 }

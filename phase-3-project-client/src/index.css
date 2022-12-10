@@ -39,17 +39,16 @@ nav {
 h3 {
 	color: #313131;
 	font-size: 24px;
-	margin-bottom: 16px;
 }
 
-a{
+a {
 	position: relative;
 	text-decoration: none;
 	font-family: 'Poppins', sans-serif;
 	color: #a0a0a0;
 	font-size: 18px;
 	letter-spacing: 0.5px;
-	padding: 0 10px;
+
 }
 
 a :hover {
@@ -100,9 +99,14 @@ input {
 	margin: 32px -8px 0px;
 }
 
-.anime-details{
+.anime-details {
     padding: 20px;
+	float:left; /* add this */
 }
+
+/* .reviews-container {
+	float:right;
+} */
 
 .anime-content{
 	width: 250px;
