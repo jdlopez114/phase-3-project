@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Header() {
+function Header() { 
+
   return (
     <header>
-        <h1>I<strong>A</strong>DB</h1>
+        <h1><strong>A</strong>nime <strong>R</strong>eviews</h1>
     </header>
   )
 }

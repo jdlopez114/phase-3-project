@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import NavBar from "./NavBar"
 import MainPage from "./MainPage";
-import InfoPage from "./InfoPage";
+import ReviewPage from "./ReviewPage";
 
 function App() {
 
 const [animeList, setAnimeList] = useState([])
-const [topAnime, setTopAnime] = useState([])
 
 useEffect(() => {
   fetch(`https://api.jikan.moe/v4/top/anime`)
   .then(r => r.json())
   .then(data => {
-    setAnimeList(data.data)
-    // console.log(animeList)
+    setAnimeList( data.data )
   })
-  .catch(error => (console.log(error)));
+  .catch(error => (console.log( error )));
 }, [])
 
   return (
-    <div className="App">
+    <div className="review-app">
       <Header/>
       <br />
       <NavBar />
       <br />
       <Routes>
-          <Route exact path="/" element={<MainPage displayData={animeList}/>} />
-          <Route exact path="/:mal_id" element={<InfoPage displayData={animeList}/>} />
+          <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
+          <Route exact path="/:mal_id" element={ <ReviewPage displayData={ animeList }/> } />
       </Routes>
     </div>
   );

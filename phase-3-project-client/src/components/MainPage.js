@@ -1,7 +1,7 @@
 import React from 'react';
 import PageCollection from "./PageCollection";
 
-function MainPage({ displayData}) {
+function MainPage({ displayData }) {
 
   return (
     <div>

@@ -1,24 +1,21 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Fira Sans', sans-serif;
+ 	font-family: 'Fira Sans', sans-serif;
 }
 
 header {
-	padding-top: 50px;
-	padding-bottom: 50px;	
+	padding-top: 20px;
+	padding-bottom: 20px;	
 }
 
 h1 {
-  color: #AAA;
-  font-size: 36px;
-  font-weight: 400;
-  text-align: center;
+	color: #AAA;
+	font-size: 36px;
+	font-weight: 400;
+	text-align: center;
 }
 
 strong {
-  color: #313131;
+ 	 color: #313131;
 }
 
 .content-wrap {
@@ -28,12 +25,25 @@ strong {
 aside {
 	flex: 1 1 250px;
 	max-width: 250px;
-	padding-right: 16px;
 }
 
-nav {
-	padding-left: 16px;
-	padding-right: 16px;
+.reviews-container{
+	width: 100%;
+}
+
+.review-page {
+	width: 100%;
+	display: flex;
+}
+
+.navbar {
+	height: 20px;
+	width: 70vw;
+	min-width: 600px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: auto;
 }
 
 h3 {
@@ -44,52 +54,16 @@ h3 {
 a {
 	position: relative;
 	text-decoration: none;
-	font-family: 'Poppins', sans-serif;
-	color: #a0a0a0;
-	font-size: 18px;
-	letter-spacing: 0.5px;
-
+	color: #fff;
+	font-size: 15px;
 }
 
 a :hover {
-	background-color: #313131;
+	background-color: #ff3c78;
 	color: #AAA;
+	border-radius: 5px;
 }
 
-main {
-	flex: 1 1 0%;
-	padding: 0px 16px;
-}
-
-.main-head {
-	display: flex;
-	justify-content: flex-end;
-}
-
-input {
-	appearance: none;
-	background: none;
-	outline: none;
-	border: none;
-
-	display: block;
-	width: 100%;
-	max-width: 400px;
-	padding: 16px;
-	border-radius: 999px;
-	background-color: #EEE;
-
-	transition: 0.4s;
-}
-
-::placeholder {
-	color: #888;
-}
-
-:focus, :valid {
-	background-color: #313131;
-	color: #FFF;
-}
 
 .anime-list {
 	display: flex;
@@ -99,37 +73,81 @@ input {
 	margin: 32px -8px 0px;
 }
 
-.anime-details {
-    padding: 20px;
-	float:left; /* add this */
+.reviews-container {
+	padding: 10px;
 }
-
-/* .reviews-container {
-	float:right;
-} */
 
 .anime-content{
 	width: 250px;
-}
-
-figure {
-	display: block;
-	margin-bottom: 16px;
+	float:left;
+	padding: 10px;
 }
 
 img {
 	display: block;
-	width: 250px;
-	height: 350px;
+	width: 220px;
+	height: 320px;
 	object-fit: cover;
 	border-radius: 16px;
 	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
-	padding: 10px;
-	transition: 0.4s;
+	padding: 5px;
 }			
 
 .anime-card {
 	width: 250px;
 	padding: 20px;
+}
+  
+.review-form {
+	margin-bottom: 50px;
+	padding: 10px;
+	background: transparent;
+}
+  
+.review-form-input {
+	padding: 14px 32px 14px 16px;
+	border-radius: 5px;
+	border: 1px solid #ff3c78;
+	outline: 0;
+	width: 100%;
+	background-color: transparent;
+	margin: 0 auto;
+	display: block;
+	max-width: 600px;
+	margin-bottom: 10px;
+}
+
+.add-review-button {
+	padding: 12px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+	background: #ff3c78;
+	color: #fff;
+	text-transform: capitalize;
+	max-width: 200px;
+	width: 100%;
+	display: flex;
+	margin: auto;
+}
+
+.review-row {
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid #ff3c78;
+	align-items: center;
+	margin: 15px auto;
+	background: transparent;
+	padding: 15px;
+	border-radius: 5px;
+	width: 90%;
+}
+
+.icons {
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	cursor: pointer;
 }
 
