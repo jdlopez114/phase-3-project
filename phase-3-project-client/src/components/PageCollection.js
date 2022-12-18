@@ -7,7 +7,7 @@ function PageCollection({ displayData }) {
   return (
     <div className='anime-list'>
         { displayData.map( anime => {
-            return <PageCard key={ anime.mal_id } displayData={ anime }/>
+            return <PageCard key={ anime.id } displayData={ anime }/>
         })}    
     </div>
   )

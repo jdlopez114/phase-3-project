@@ -10,10 +10,11 @@ function App() {
 const [animeList, setAnimeList] = useState([])
 
 useEffect(() => {
-  fetch(`https://api.jikan.moe/v4/top/anime`)
+  fetch(`http://127.0.0.1:9393/animes`)
   .then(r => r.json())
   .then(data => {
-    setAnimeList( data.data )
+    // console.log(data)
+    setAnimeList( data)
   })
   .catch(error => (console.log( error )));
 }, [])
@@ -26,7 +27,7 @@ useEffect(() => {
       <br />
       <Routes>
           <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
-          <Route exact path="/:mal_id" element={ <ReviewPage displayData={ animeList }/> } />
+          <Route exact path="/:id" element={ <ReviewPage displayData={ animeList }/> } />
       </Routes>
     </div>
   );
