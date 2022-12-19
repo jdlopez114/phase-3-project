@@ -14,7 +14,7 @@ useEffect(() => {
   .then(r => r.json())
   .then(data => {
     // console.log(data)
-    setAnimeList( data)
+    setAnimeList( data )
   })
   .catch(error => (console.log( error )));
 }, [])

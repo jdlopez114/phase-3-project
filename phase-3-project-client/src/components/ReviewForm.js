@@ -21,22 +21,21 @@ function ReviewForm(props) {
   return (
     <div className='review-form-section' >
       <form noValidate autoComplete="off" className='review-form' onSubmit={ handleSubmit } >
-            <input
-              placeholder='Add a review'
-              value={ input }
-              onChange={ handleChange }
-              name='text'
-              className='review-form-input'
-            />
-            <div >
-              <button 
-                className='add-review-button' 
-                onClick={ handleSubmit } 
-              >
-                Add review
-              </button>
-            </div>
-           
+        <input
+          placeholder='Add a review'
+          value={ input }
+          onChange={ handleChange }
+          name='text'
+          className='review-form-input'
+        />
+        <div >
+          <button 
+            className='add-review-button' 
+            onClick={ handleSubmit } 
+          >
+            Add review
+          </button>
+        </div>
       </form>
     </div>
   );

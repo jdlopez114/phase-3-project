@@ -1,7 +1,6 @@
 import React from 'react';
 import PageCard from "./PageCard";
 
-
 function PageCollection({ displayData }) {
 
   return (
