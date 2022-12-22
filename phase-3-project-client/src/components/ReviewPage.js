@@ -1,16 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
-// import ReviewSection from './ReviewSection';
 
-
-function ReviewPage({ reviewData, animeData }) {
+function ReviewPage({ reviewData, animeData, addNewReview }) {
       
 const { id } = useParams()
 const [anime] = animeData.filter(ani => ani.id === parseInt(id))
 const reviews = reviewData.filter(rev => rev.anime_id === parseInt(id))
-
-console.log(anime, reviews)
 
 return (
     <div className="review-page"> 
@@ -30,17 +27,11 @@ return (
                 </div>
             </div>
         </aside>
-        <div className="reviews-container"> 
-            
-            {
-                reviews.map(rev => {
-                    return <ReviewRow key={rev.id} reviews={reviews}/>
-                })
-            }
-            {/* <ReviewSection reviewData={ reviews }/> */}
-            {/* <Link to={ `/reviews/${ id }` }>
-            <button>Leave a Review!</button>
-            </Link> */}
+        <div className="review-section">
+            <h1>Leave Your Review!</h1>
+            <ReviewForm onSubmit={ addNewReview } />
+                {reviews.map(rev => {
+                    return <ReviewRow key={rev.id} reviews={rev}/>}) }
         </div>
     </div>
   );

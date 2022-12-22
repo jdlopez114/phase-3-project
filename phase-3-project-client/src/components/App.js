@@ -4,13 +4,13 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import NavBar from "./NavBar"
 import MainPage from "./MainPage";
 import ReviewPage from "./ReviewPage";
-import ReviewSection from "./ReviewSection";
+// import ReviewSection from "./ReviewSection";
 
 function App() {
 
 const [ animeList, setAnimeList ] = useState([])
 const [ reviewList, setReviewList ] = useState([])
-const navigate = useNavigate();
+// const navigate = useNavigate();
 
 useEffect(() => {
   fetch(`http://127.0.0.1:9393/animes`)
@@ -36,9 +36,10 @@ function addNewReview(newReview){
   })
       .then(r => r.json())
       .then(data => 
-        navigate(`/`))
-        .catch(error => (console.log(error)));
-  setReviewList([...reviewList, newReview])
+        // navigate(`/`))
+        // .catch(error => (console.log(error)));
+  // setReviewList([...reviewList, newReview])
+  setReviewList([...reviewList, newReview]))
 }
 
   return (
@@ -49,8 +50,11 @@ function addNewReview(newReview){
       <br />
       <Routes>
           <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
-          <Route exact path="/:id" element={ <ReviewPage reviewData={ reviewList } animeData={ animeList }/> } />
-          <Route exact path="/reviews/:id" element={ <ReviewSection displayData={ reviewList } addNewReview={ addNewReview }/> } />
+          <Route exact path="/:id" element={ <ReviewPage 
+                                                reviewData={ reviewList } 
+                                                animeData={ animeList } 
+                                                addNewReview={ addNewReview }/> 
+                                            }/>
       </Routes>
     </div>
   );

@@ -1,37 +1,46 @@
 import React, { useState } from 'react';
 
-function ReviewForm(props) {
+function ReviewForm({ addNewReview }) {
 
-  const [ input, setInput ] = useState(props.edit ? props.edit.value : '');
+  const [ formData, setFormData ] = useState (
+    { 
+      "user_name" : "",
+      "comments" : ""
+    }
+  )
 
-  const handleChange = e => {
-    setInput( e.target.value );
-  };
+  function handleSubmit(e){
+    e.preventDefault()
+    addNewReview(formData)
+    setFormData ('')
+  }
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    props.onSubmit({
-      id: Math.floor( Math.random() * 10000 ),
-      text: input
-    });
-    setInput( '' );
-  };
+  function handleChange(e){
+    setFormData({
+        ...formData, [ e.target.name ] : e.target.value
+    })
+}
 
   return (
     <div className='review-form-section' >
       <form noValidate autoComplete="off" className='review-form' onSubmit={ handleSubmit } >
+      <input
+          placeholder='User Name'
+          value={ formData.user_name }
+          onChange={ handleChange }
+          name='user_name'
+          className='review-form-input'
+        />
         <input
           placeholder='Add a review'
-          value={ input }
+          value={ formData.comments }
           onChange={ handleChange }
-          name='text'
+          name='comments'
           className='review-form-input'
         />
         <div >
           <button 
-            className='add-review-button' 
-            onClick={ handleSubmit } 
+            className='add-review-button'
           >
             Add review
           </button>
