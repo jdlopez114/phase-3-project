@@ -1,12 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import ReviewSection from './ReviewSection';
+import ReviewRow from './ReviewRow';
+// import ReviewSection from './ReviewSection';
 
 
-function ReviewPage({ displayData }) {
+function ReviewPage({ reviewData, animeData }) {
       
 const { id } = useParams()
-const anime = displayData.find(ani => ani.id===parseInt(id))
+const [anime] = animeData.filter(ani => ani.id === parseInt(id))
+const reviews = reviewData.filter(rev => rev.anime_id === parseInt(id))
+
+console.log(anime, reviews)
 
 return (
     <div className="review-page"> 
@@ -27,7 +31,16 @@ return (
             </div>
         </aside>
         <div className="reviews-container"> 
-            <ReviewSection/>
+            
+            {
+                reviews.map(rev => {
+                    return <ReviewRow key={rev.id} reviews={reviews}/>
+                })
+            }
+            {/* <ReviewSection reviewData={ reviews }/> */}
+            {/* <Link to={ `/reviews/${ id }` }>
+            <button>Leave a Review!</button>
+            </Link> */}
         </div>
     </div>
   );
