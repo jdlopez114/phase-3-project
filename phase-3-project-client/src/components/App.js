@@ -4,7 +4,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import NavBar from "./NavBar"
 import MainPage from "./MainPage";
 import ReviewPage from "./ReviewPage";
-// import ReviewSection from "./ReviewSection";
 
 function App() {
 
