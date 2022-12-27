@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RiCloseCircleLine } from 'react-icons/ri';
+import { TiEdit } from 'react-icons/ti';
+import ReviewForm from './ReviewForm';
 
-const ReviewRow = ({ review, deleteReview}) => {
+const ReviewRow = ({ review, deleteReview, editReview }) => {
+  
+const [edit, setEdit] = useState(
+  { 
+    "user_name" : "",
+    "comments" : "",
+  }
+)
+
+function submitUpdate(value) {
+  editReview(edit.id, value);
+  setEdit({
+    "user_name" : "",
+    "comments" : "",
+  });
+};
+
+if (edit.id) {
+  return <ReviewForm edit={edit} submitUpdate={submitUpdate} />;
+}
 
   return (
     <div className='review-row' >
@@ -13,6 +34,10 @@ const ReviewRow = ({ review, deleteReview}) => {
         <RiCloseCircleLine
           onClick={() => deleteReview( review.id )}
           className='delete-icon'
+        />
+        <TiEdit
+          onClick={() => setEdit({ id: review.id, value: review.comments })}
+          className='edit-icon'
         />
       </div>
     </div>

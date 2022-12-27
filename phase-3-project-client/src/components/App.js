@@ -44,14 +44,37 @@ function deleteReview( id ){
   fetch(`http://127.0.0.1:9393/reviews/${id}`,{
     method: "DELETE",
     headers: { 
-      "Content-Type" : "application/json"}
-    })
+      "Content-Type" : "application/json"
+    }
+  })
     .then(r => r.json())
     .then(data => {
       setReviewList(reviewList.filter(r =>r.id != id))
     })
+    .catch(error => (console.log(error)));
 }
 
+function editReview( editedReview ){
+  fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
+    method: "PATCH",
+    headers:{
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify( editedReview )
+  })
+  .then(r => r.json())
+  .then(data => {
+
+    console.log(data)
+    // setReviewList(reviewList.map(r => {
+    //   if(r.id === data.id){
+    //     return data
+    //   } else {
+    //     return r
+    //   }
+    // }))
+  })
+}
 
   return (
     <div className="review-app">
@@ -65,7 +88,9 @@ function deleteReview( id ){
                                                 reviewData={ reviewList } 
                                                 animeData={ animeList } 
                                                 addNewReview={ addNewReview }
-                                                deleteReview={ deleteReview }/> 
+                                                deleteReview={ deleteReview }
+                                                editReview={ editReview }
+                                              /> 
                                             }/>
       </Routes>
     </div>
