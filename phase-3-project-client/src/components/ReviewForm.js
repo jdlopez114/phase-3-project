@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 
-function ReviewForm({ addNewReview }) {
+function ReviewForm({ addNewReview, anime }) {
 
   const [ formData, setFormData ] = useState (
     { 
       "user_name" : "",
-      "comments" : ""
+      "comments" : "",
+      "anime_id" : anime.id
     }
   )
 
   function handleSubmit(e){
     e.preventDefault()
     addNewReview(formData)
-    setFormData ('')
   }
 
   function handleChange(e){
     setFormData({
-        ...formData, [ e.target.name ] : e.target.value
+        ...formData, 
+        [ e.target.name ] : e.target.value
     })
 }
 
@@ -42,7 +43,7 @@ function ReviewForm({ addNewReview }) {
           <button 
             className='add-review-button'
           >
-            Add review
+            Add Review
           </button>
         </div>
       </form>

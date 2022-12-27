@@ -9,37 +9,49 @@ function App() {
 
 const [ animeList, setAnimeList ] = useState([])
 const [ reviewList, setReviewList ] = useState([])
-// const navigate = useNavigate();
+const navigate = useNavigate();
 
 useEffect(() => {
   fetch(`http://127.0.0.1:9393/animes`)
   .then(r => r.json())
-  .then(setAnimeList)
+  .then(data => {
+    setAnimeList(data)})
   .catch(error => (console.log( error )));
 
   fetch(`http://127.0.0.1:9393/reviews`)
   .then(r => r.json())
   .then(setReviewList)
-
   .catch(error => (console.log( error )));
-  
+
 }, [])
 
-function addNewReview(newReview){
+function addNewReview( newReview ){
   fetch(`http://127.0.0.1:9393/reviews`, {
     method: "POST",
     headers: { 
       "Content-Type" : "application/json"
     }, 
-      body: JSON.stringify(newReview)
+      body: JSON.stringify( newReview )
   })
       .then(r => r.json())
       .then(data => 
-        // navigate(`/`))
-        // .catch(error => (console.log(error)));
-  // setReviewList([...reviewList, newReview])
-  setReviewList([...reviewList, newReview]))
+        // navigate(`/`),
+        setReviewList([...reviewList, newReview]))
+        .catch(error => (console.log(error)));
+} 
+
+function deleteReview( id ){
+  fetch(`http://127.0.0.1:9393/reviews/${id}`,{
+    method: "DELETE",
+    headers: { 
+      "Content-Type" : "application/json"}
+    })
+    .then(r => r.json())
+    .then(data => {
+      setReviewList(reviewList.filter(r =>r.id != id))
+    })
 }
+
 
   return (
     <div className="review-app">
@@ -52,7 +64,8 @@ function addNewReview(newReview){
           <Route exact path="/:id" element={ <ReviewPage 
                                                 reviewData={ reviewList } 
                                                 animeData={ animeList } 
-                                                addNewReview={ addNewReview }/> 
+                                                addNewReview={ addNewReview }
+                                                deleteReview={ deleteReview }/> 
                                             }/>
       </Routes>
     </div>

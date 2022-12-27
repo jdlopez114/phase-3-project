@@ -1,19 +1,19 @@
 import React from 'react';
-// import { RiCloseCircleLine } from 'react-icons/ri';
+import { RiCloseCircleLine } from 'react-icons/ri';
 
-const ReviewRow = ({ reviews }) => {
+const ReviewRow = ({ review, deleteReview}) => {
 
   return (
     <div className='review-row' >
-      <div key={ reviews.id }>
-        <h4>{ reviews.user_name }</h4>
-        { reviews.comments }
+      <div key={ review.id }>
+        <h4>{ review.user_name }</h4>
+        { review.comments }
       </div>
       <div className='icons'>
-        {/* <RiCloseCircleLine
-          onClick={() => removeReview( review.id )}
+        <RiCloseCircleLine
+          onClick={() => deleteReview( review.id )}
           className='delete-icon'
-        /> */}
+        />
       </div>
     </div>
   );
