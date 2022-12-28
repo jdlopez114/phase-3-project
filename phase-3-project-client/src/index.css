@@ -22,11 +22,6 @@ strong {
 	display: flex;
 }
 
-aside {
-	flex: 1 1 250px;
-	max-width: 250px;
-}
-
 .review-page {
 	width: 100%;
 	display: flex;
@@ -69,14 +64,10 @@ a :hover {
 	margin: 32px -8px 0px;
 }
 
-.reviews-section {
-	padding: 10px;
-}
-
 .anime-content{
 	width: 250px;
-	float:left;
 	padding: 10px;
+	display: inline-block;
 }
 
 img {
@@ -93,12 +84,15 @@ img {
 	width: 250px;
 	padding: 20px;
 }
+.review-section{
+	padding: 10px
+}
   
 .review-form {
 	margin-bottom: 50px;
-	padding: 10px;
 	background: transparent;
-	
+	width: 100%;
+	display: inline-block;
 }
   
 .review-form-input {
@@ -109,8 +103,8 @@ img {
 	width: 100%;
 	background-color: transparent;
 	margin: auto;
-	display: flex;
-	max-width: 600px;
+	display: inline-block;
+	/* max-width: 600px; */
 	margin-bottom: 10px;
 }
 
@@ -125,7 +119,7 @@ img {
 	text-transform: capitalize;
 	max-width: 200px;
 	width: 100%;
-	display: flex;
+	display: inline-block;
 	margin: auto;
 }
 
@@ -133,17 +127,16 @@ img {
 	display: flex;
 	justify-content: space-between;
 	border: 1px solid #ff3c78;
-	align-items: center;
+	align-items: stretch;
 	margin: 15px auto;
 	background: transparent;
-	padding: 15px;
+	padding: 14px 32px 14px 16px;
 	border-radius: 5px;
 	width: 100%;
 }
 
 .icons {
 	display: flex;
-	align-items: center;
 	font-size: 24px;
 	cursor: pointer;
 }

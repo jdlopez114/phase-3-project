@@ -25,11 +25,11 @@ function EditForm({ formDataEdit, setFormDataEdit, editReview}) {
                 placeholder='User Name'
                 value={ formDataEdit.user_name }
                 onChange={ handleChange }
-                name='user_name'
+                name='Edit user name'
                 className='review-form-input'
                 />
             <input
-                placeholder='Add a review'
+                placeholder='Edit your review'
                 value={ formDataEdit.comments }
                 onChange={ handleChange }
                 name='comments'

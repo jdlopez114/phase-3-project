@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 
 function ReviewForm({ addNewReview, anime }) {
 
-  const [ formData, setFormData ] = useState ( 
-    // edit ? edit.value :
-    { 
+  const [ formData, setFormData ] = useState ({ 
       "user_name" : "",
       "comments" : "",
       "anime_id" : anime.id
-    }
-  )
+    })
 
   function handleFormSubmit(e){
     e.preventDefault()
-    addNewReview(formData)
+    addNewReview( formData )
   }
 
   function handleChange(e){

@@ -22,7 +22,6 @@ useEffect(() => {
   .then(r => r.json())
   .then(setReviewList)
   .catch(error => (console.log( error )));
-
 }, [])
 
 function addNewReview( newReview ){
@@ -35,9 +34,9 @@ function addNewReview( newReview ){
   })
       .then(r => r.json())
       .then(data => 
-        // navigate(`/`),
-        setReviewList([...reviewList, newReview]))
-        .catch(error => (console.log(error)));
+        setReviewList([newReview,...reviewList]))
+        .catch(error => (console.log(error)))
+        .then(navigate(`/${newReview.anime_id}`))
 } 
 
 function deleteReview( id ){
@@ -64,7 +63,6 @@ function editReview( editedReview ){
   })
   .then(r => r.json())
   .then(data => {
-    // console.log(data)
     setReviewList(reviewList.map(r => {
       if(r.id === data.id){
         return data

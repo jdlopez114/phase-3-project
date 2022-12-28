@@ -11,7 +11,10 @@ function NavBar() {
   }
 
   const notSelected ={ 
-    color: '#a0a0a0' 
+    color: '#fff',
+    background: '#AAA',
+    borderRadius: '22px',
+    padding: '10px'
   }
 
   const NavBar = 
