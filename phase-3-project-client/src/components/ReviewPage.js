@@ -29,7 +29,7 @@ return (
         </aside>
         <div className="review-section">
             <h1>Leave Your Review!</h1>
-            <ReviewForm addNewReview={ addNewReview } editReview={ editReview } anime={anime}/> 
+            <ReviewForm addNewReview={ addNewReview } anime={anime}/> 
                 {reviews.map(rev => {
                 return <ReviewRow 
                             key={rev.id} 

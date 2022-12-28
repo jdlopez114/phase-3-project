@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-function ReviewForm({ addNewReview, anime, edit, editReview, submitUpdate }) {
+function ReviewForm({ addNewReview, anime }) {
 
-  const [ formData, setFormData ] = useState ( edit ? edit.value :
+  const [ formData, setFormData ] = useState ( 
+    // edit ? edit.value :
     { 
       "user_name" : "",
       "comments" : "",
@@ -10,16 +11,11 @@ function ReviewForm({ addNewReview, anime, edit, editReview, submitUpdate }) {
     }
   )
 
-  function handleSubmit(e){
+  function handleFormSubmit(e){
     e.preventDefault()
     addNewReview(formData)
   }
 
-  // function submitUpdate(e){
-  //   e.preventDefault()
-  //   editReview(formData)
-  // }
- 
   function handleChange(e){
     setFormData({
         ...formData, 
@@ -29,36 +25,7 @@ function ReviewForm({ addNewReview, anime, edit, editReview, submitUpdate }) {
 
   return (
     <div className='review-form-section' >
-      
-        { edit ? (
-           <>
-           <form noValidate autoComplete="off" className='review-form' onSubmit={ submitUpdate } >
-              <input
-                placeholder='Update user name'
-                value={ formData.user_name }
-                onChange={ handleChange }
-                name='user_name'
-                className='review-form-input'
-              />
-              <input
-                placeholder='Update review'
-                value={ formData.comments }
-                onChange={ handleChange }
-                name='comments'
-                className='review-form-input'
-              />
-              <div >
-                <button 
-                  className='add-review-button'
-                >
-                  Update Review
-                </button>
-              </div>
-            </form>
-           </>
-        ) : (
-          <>
-          <form noValidate autoComplete="off" className='review-form' onSubmit={ handleSubmit } >
+          <form noValidate autoComplete="off" className='review-form' onSubmit={ handleFormSubmit } >
             <input
                 placeholder='User Name'
                 value={ formData.user_name }
@@ -81,9 +48,6 @@ function ReviewForm({ addNewReview, anime, edit, editReview, submitUpdate }) {
               </button>
             </div>
           </form>
-          </>
-        )}
-      
     </div>
   );
 }

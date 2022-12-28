@@ -49,7 +49,7 @@ function deleteReview( id ){
   })
     .then(r => r.json())
     .then(data => {
-      setReviewList(reviewList.filter(r =>r.id != id))
+      setReviewList(reviewList.filter(r =>r.id !== id))
     })
     .catch(error => (console.log(error)));
 }
@@ -64,16 +64,15 @@ function editReview( editedReview ){
   })
   .then(r => r.json())
   .then(data => {
-
-    console.log(data)
-    // setReviewList(reviewList.map(r => {
-    //   if(r.id === data.id){
-    //     return data
-    //   } else {
-    //     return r
-    //   }
-    // }))
-  })
+    // console.log(data)
+    setReviewList(reviewList.map(r => {
+      if(r.id === data.id){
+        return data
+      } else {
+        return r
+      }
+    }))
+  }); console.log(reviewList)
 }
 
   return (
