@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-function EditForm({ formDataEdit, setFormDataEdit, editReview}) {
+function EditForm({ formDataEdit, setFormDataEdit, updateReview}) {
 
   function handleUpdateSubmit(e){
     e.preventDefault()
-    editReview(formDataEdit)
+    updateReview(formDataEdit)
     setFormDataEdit({
         "user_name" : "",
         "comments" : "",
@@ -22,14 +22,14 @@ function EditForm({ formDataEdit, setFormDataEdit, editReview}) {
     <div className='review-form-section' >
         <form noValidate autoComplete="off" className='review-form' onSubmit={ handleUpdateSubmit }>
             <input
-                placeholder='User Name'
+                placeholder='Edit User Name'
                 value={ formDataEdit.user_name }
                 onChange={ handleChange }
-                name='Edit user name'
+                name='user_name'
                 className='review-form-input'
                 />
             <input
-                placeholder='Edit your review'
+                placeholder='Edit Review'
                 value={ formDataEdit.comments }
                 onChange={ handleChange }
                 name='comments'

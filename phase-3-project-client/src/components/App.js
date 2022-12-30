@@ -53,7 +53,7 @@ function deleteReview( id ){
     .catch(error => (console.log(error)));
 }
 
-function editReview( editedReview ){
+function updateReview( editedReview ){
   fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
     method: "PATCH",
     headers:{
@@ -63,6 +63,7 @@ function editReview( editedReview ){
   })
   .then(r => r.json())
   .then(data => {
+    console.log(data)
     setReviewList(reviewList.map(r => {
       if(r.id === data.id){
         return data
@@ -70,7 +71,7 @@ function editReview( editedReview ){
         return r
       }
     }))
-  }); console.log(reviewList)
+  }); 
 }
 
   return (
@@ -86,7 +87,7 @@ function editReview( editedReview ){
                                                 animeData={ animeList } 
                                                 addNewReview={ addNewReview }
                                                 deleteReview={ deleteReview }
-                                                editReview={ editReview }
+                                                updateReview={ updateReview }
                                               /> 
                                             }/>
       </Routes>

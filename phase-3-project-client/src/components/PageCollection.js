@@ -12,4 +12,4 @@ function PageCollection({ displayData }) {
   )
 }
 
-export default PageCollection
+export default PageCollection;

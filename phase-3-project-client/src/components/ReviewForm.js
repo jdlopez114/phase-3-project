@@ -22,29 +22,29 @@ function ReviewForm({ addNewReview, anime }) {
 
   return (
     <div className='review-form-section' >
-          <form noValidate autoComplete="off" className='review-form' onSubmit={ handleFormSubmit } >
-            <input
-                placeholder='User Name'
-                value={ formData.user_name }
-                onChange={ handleChange }
-                name='user_name'
-                className='review-form-input'
-              />
-            <input
-              placeholder='Add a review'
-              value={ formData.comments }
+        <form noValidate autoComplete="off" className='review-form' onSubmit={ handleFormSubmit } >
+          <input
+              placeholder='User Name'
+              value={ formData.user_name }
               onChange={ handleChange }
-              name='comments'
+              name='user_name'
               className='review-form-input'
-            />
-            <div >
-              <button 
-                className='add-review-button'
-              >
-                Add Review
-              </button>
-            </div>
-          </form>
+          />
+          <input
+            placeholder='Add a review'
+            value={ formData.comments }
+            onChange={ handleChange }
+            name='comments'
+            className='review-form-input'
+          />
+          <div >
+            <button 
+              className='add-review-button'
+            >
+              Add Review
+            </button>
+          </div>
+        </form>
     </div>
   );
 }

@@ -3,8 +3,8 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
 import EditForm from './EditForm';
 
-const ReviewRow = ({ review, deleteReview, editReview }) => {
-  
+const ReviewRow = ({ review, deleteReview, updateReview }) => {
+
 const [ formDataEdit, setFormDataEdit ]  = useState({ 
     "user_name" : review.user_name,
     "comments" : review.comments,
@@ -13,19 +13,19 @@ const [ formDataEdit, setFormDataEdit ]  = useState({
 if (formDataEdit.id) {
   return <EditForm 
             formDataEdit={ formDataEdit } 
-            editReview={ editReview } 
+            updateReview={ updateReview } 
             setFormDataEdit={ setFormDataEdit }/>;
 }
 
   return (
-    <div className='review-row'>
+    <div className='review-row'key={ review.id}>
       <div className='review-container' key={ review.id }>
         <h3>{ review.user_name }</h3>
         <h4>{ review.comments }</h4>
       </div>
-      <div className='icons'>
+      <div className='icons'> 
         <TiEdit
-          onClick={() => setFormDataEdit({ id: review.id, value: review.comments })}
+          onClick={() => setFormDataEdit({ id: review.id, value: review })}
           className='edit-icon'
         />
         <RiCloseCircleLine

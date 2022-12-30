@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
 
-function ReviewPage({ animeData, addNewReview, reviewData, deleteReview, editReview }) {
+function ReviewPage({ animeData, addNewReview, reviewData, deleteReview, updateReview }) {
       
 const { id } = useParams()
 const [anime] = animeData.filter(ani => ani.id === parseInt(id))
@@ -31,12 +31,12 @@ return (
             <h1>Leave Your Review!</h1>
             <ReviewForm addNewReview={ addNewReview } anime={ anime }/> 
                 {reviews.map(rev => {
-                return <ReviewRow 
-                            key={ rev.id } 
-                            review={ rev } 
-                            deleteReview={ deleteReview } 
-                            editReview={ editReview } 
-                        />
+                    return <ReviewRow 
+                                key={ rev.id } 
+                                review={ rev } 
+                                deleteReview={ deleteReview } 
+                                updateReview={ updateReview } 
+                            />
                     })
                 }
         </div>
@@ -44,4 +44,4 @@ return (
   );
 }
 
-export default ReviewPage
+export default ReviewPage;

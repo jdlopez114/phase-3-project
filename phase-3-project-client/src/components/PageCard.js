@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function PageCard({ displayData }) {
 
@@ -15,4 +15,4 @@ function PageCard({ displayData }) {
   )
 }
 
-export default PageCard
+export default PageCard;
