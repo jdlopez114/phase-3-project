@@ -9,7 +9,7 @@ function PageCard({ displayData }) {
     <Link to={ `/${ id }` }>
       <div  className='anime-card' >
         <img src={ image_url} alt="Image not found."/>
-        <h3>{ rank }:{ movie_name }</h3>
+        <h3>{ rank }. { movie_name }</h3>
       </div>
     </Link>
   )

@@ -34,9 +34,9 @@ function addNewReview( newReview ){
   })
       .then(r => r.json())
       .then(data => 
-        setReviewList([newReview,...reviewList]))
-        .catch(error => (console.log(error)))
-        .then(navigate(`/${newReview.anime_id}`))
+        navigate(`/${data.anime_id}`))
+        .catch(error => (console.log(error)));
+        setReviewList([newReview,...reviewList]) 
 } 
 
 function deleteReview( id ){
@@ -48,6 +48,7 @@ function deleteReview( id ){
   })
     .then(r => r.json())
     .then(data => {
+      console.log(data)
       setReviewList(reviewList.filter(r =>r.id !== id))
     })
     .catch(error => (console.log(error)));

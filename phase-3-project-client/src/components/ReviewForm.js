@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function ReviewForm({ addNewReview, anime }) {
 
@@ -11,6 +11,10 @@ function ReviewForm({ addNewReview, anime }) {
   function handleFormSubmit(e){
     e.preventDefault()
     addNewReview( formData )
+    setFormData({
+      "user_name" : "",
+      "comments" : "",
+    })
   }
 
   function handleChange(e){
