@@ -16,10 +16,10 @@ return (
                 <div className="anime-content">
                     <h3>{ anime.movie_name }</h3>
                     <br/>
-                    {/* <img src={ data.data.images.jpg.image_url } alt="" /> */}
+                    <img src={ anime.image_url } alt="image not found." />
                     <br/>
                     <div className="info">
-                        <h3>#Rank: { anime.rank }</h3>
+                        <h3>Rank: # { anime.rank }</h3>
                         <br/>
                         <h4>Release Year: { anime.year }</h4>
                         <h4>Duration: { anime.duration } mins</h4>
