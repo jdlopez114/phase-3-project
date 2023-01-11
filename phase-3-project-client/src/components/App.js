@@ -83,7 +83,7 @@ function updateReview( editedReview ){
       <br />
       <Routes>
           <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
-          <Route exact path="/:id" element={ <ReviewPage 
+          <Route exact path="/animes/:id" element={ <ReviewPage 
                                                 reviewData={ reviewList } 
                                                 animeData={ animeList } 
                                                 addNewReview={ addNewReview }
