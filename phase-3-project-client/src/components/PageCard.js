@@ -8,7 +8,7 @@ function PageCard({ displayData }) {
   return (
     <Link to={ `/animes/${ id }` }>
       <div  className='anime-card' >
-        <img src={ image_url} alt="Image not found."/>
+        <img src={ image_url} alt="Not found."/>
         <h3>{ rank }. { movie_name }</h3>
       </div>
     </Link>

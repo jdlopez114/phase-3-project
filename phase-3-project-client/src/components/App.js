@@ -30,7 +30,7 @@ function addNewReview( newReview ){
   })
       .then(r => r.json())
       .then(data => 
-        navigate(`/${data.anime_id}`))
+        navigate(`/animes/${data.anime_id}`))
         .catch(error => (console.log(error)));
         setReviewList([newReview,...reviewList]) 
 } 
@@ -80,7 +80,6 @@ function updateReview( editedReview ){
       <Routes>
           <Route exact path="/animes/" element={ <MainPage displayData={ animeList }/> } />
           <Route exact path="/animes/:id" element={ <ReviewPage 
-                                                reviewData={ reviewList } 
                                                 animeData={ animeList } 
                                                 addNewReview={ addNewReview }
                                                 deleteReview={ deleteReview }
