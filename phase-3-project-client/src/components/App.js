@@ -16,9 +16,13 @@ useEffect(() => {
   .then(r => r.json())
   .then(data => {
     // console.log(data)
-    setAnimeList(data)})
+    setAnimeList(data)
+    setReviewList(data.map(dat => dat.reviews))
+  })
   .catch(error => (console.log( error )));
 }, [])
+
+console.log("Reviews:", reviewList)
 
 function addNewReview( newReview ){
   fetch(`http://127.0.0.1:9393/reviews`, {
