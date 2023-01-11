@@ -15,12 +15,8 @@ useEffect(() => {
   fetch(`http://127.0.0.1:9393/animes`)
   .then(r => r.json())
   .then(data => {
+    // console.log(data)
     setAnimeList(data)})
-  .catch(error => (console.log( error )));
-
-  fetch(`http://127.0.0.1:9393/reviews`)
-  .then(r => r.json())
-  .then(setReviewList)
   .catch(error => (console.log( error )));
 }, [])
 
@@ -64,7 +60,7 @@ function updateReview( editedReview ){
   })
   .then(r => r.json())
   .then(data => {
-    console.log(data)
+    // console.log(data)
     setReviewList(reviewList.map(r => {
       if(r.id === data.id){
         return data
@@ -82,7 +78,7 @@ function updateReview( editedReview ){
       <NavBar />
       <br />
       <Routes>
-          <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
+          <Route exact path="/animes/" element={ <MainPage displayData={ animeList }/> } />
           <Route exact path="/animes/:id" element={ <ReviewPage 
                                                 reviewData={ reviewList } 
                                                 animeData={ animeList } 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
@@ -6,24 +6,16 @@ import ReviewRow from './ReviewRow';
 function ReviewPage({ animeData, addNewReview, reviewData, deleteReview, updateReview }) {
       
 const { id } = useParams()
-
-// const [currentAnime, setCurrentAnime] = useState()
-
 const anime = animeData.find(ani => ani.id === parseInt(id))
+// const reviews = anime.reviews.map(rev => {
+//                     return <ReviewRow 
+//                         key={ rev.id } 
+//                         review={ rev } 
+//                         deleteReview={ deleteReview } 
+//                         updateReview={ updateReview } 
+//                 />
+//         })
 
-// const reviews = reviewData.filter(rev => rev.anime_id === parseInt(id))
-
-// useEffect(() => {
-//     if (id !== undefined) {
-//         fetch(`http://127.0.0.1:9393/animes/${id}`)
-//             .then((res) => res.json())
-//             .then((data) => setCurrentAnime(data))
-//         console.log("if olan")
-//     }
-
-// }, [id])
-
-console.log(id)
 
 return (
     <div className="review-page"> 
@@ -45,16 +37,8 @@ return (
         </aside>
         <div className="review-section">
             <h1>Leave Your Review!</h1>
-            {/* <ReviewForm addNewReview={ addNewReview } anime={ anime }/> 
-                {reviews.map(rev => {
-                    return <ReviewRow 
-                                key={ rev.id } 
-                                review={ rev } 
-                                deleteReview={ deleteReview } 
-                                updateReview={ updateReview } 
-                            />
-                    })
-                } */}
+            {/* <ReviewForm addNewReview={ addNewReview } anime={ anime }/>  */}
+            {/* { reviews } */}
         </div>
     </div>
   );

@@ -19,7 +19,7 @@ function NavBar() {
 
   const NavBar = 
     <div className='navbar'>
-      <NavLink exact="true" to="/" style={({ isActive }) => isActive ? selected: notSelected }> Home Page </NavLink>
+      <NavLink exact="true" to="/animes/" style={({ isActive }) => isActive ? selected: notSelected }> Home Page </NavLink>
     </div>
 
   return (
