@@ -40,20 +40,20 @@ function addNewReview( newReview ){
       setReviewList([newReview,...reviewList]) 
 } 
 
-function deleteReview( id ){
-  fetch(`http://127.0.0.1:9393/reviews/${id}`,{
-    method: "DELETE",
-    headers: { 
-      "Content-Type" : "application/json"
-    }
-  })
-    .then(r => r.json())
-    .then(data => {
-      console.log(data)
-      setReviewList(reviewList.filter(r =>r.id !== id))
-    })
-    .catch(error => (console.log(error)));
-}
+// function deleteReview( id ){
+//   fetch(`http://127.0.0.1:9393/reviews/${id}`,{
+//     method: "DELETE",
+//     headers: { 
+//       "Content-Type" : "application/json"
+//     }
+//   })
+//     .then(r => r.json())
+//     .then(data => {
+//       console.log(data)
+//       setReviewList(reviewList.filter(r =>r.id !== id))
+//     })
+//     .catch(error => (console.log(error)));
+// }
 
 function updateReview( editedReview ){
   fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
@@ -86,10 +86,13 @@ function updateReview( editedReview ){
         <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
           <Route exact path="/animes/" element={ <MainPage displayData={ animeList }/> } />
           <Route exact path="/animes/:id" element={ <ReviewPage 
-                                                animeData={ animeList } 
+                                                animeList={ animeList } 
+                                                setAnimeList={ setAnimeList }
                                                 addNewReview={ addNewReview }
-                                                deleteReview={ deleteReview }
+                                                // deleteReview={ deleteReview }
                                                 updateReview={ updateReview }
+                                                reviewList={ reviewList }
+                                                setReviewList={ setReviewList }
                                               /> 
                                             }/>
       </Routes>

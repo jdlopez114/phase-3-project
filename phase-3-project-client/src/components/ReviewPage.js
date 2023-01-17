@@ -1,13 +1,29 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
 
-function ReviewPage({ animeData, addNewReview, deleteReview, updateReview }) {
+function ReviewPage({ animeList, addNewReview, deleteReview, updateReview, reviewList, setReviewList, setAnimeList }) {
       
-const { id } = useParams()
-const anime = animeData.find(ani => ani.id === parseInt(id))
+const { id } = useParams();
+const navigate = useNavigate();
+const anime = animeList.find(ani => ani.id === parseInt(id));
 
+function deleteReview( id ){
+    fetch(`http://127.0.0.1:9393/reviews/${id}`,{
+      method: "DELETE",
+      headers: { 
+        "Content-Type" : "application/json"
+      }
+    })
+      .then(() => removeReview(id))
+      .then(navigate(`/animes/${anime.id}`))
+  }
+  
+  const removeReview = id => {
+    setReviewList(reviewList.filter(r =>r.id !== id))
+  }
+  
 return (
     <div className="review-page"> 
         <aside>
