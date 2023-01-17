@@ -34,9 +34,10 @@ function addNewReview( newReview ){
   })
       .then(r => r.json())
       .then(data => 
+        // console.log(data))
         navigate(`/animes/${data.anime_id}`))
         .catch(error => (console.log(error)));
-        setReviewList([newReview,...reviewList]) 
+      setReviewList([newReview,...reviewList]) 
 } 
 
 function deleteReview( id ){
@@ -82,6 +83,7 @@ function updateReview( editedReview ){
       <NavBar />
       <br />
       <Routes>
+        <Route exact path="/" element={ <MainPage displayData={ animeList }/> } />
           <Route exact path="/animes/" element={ <MainPage displayData={ animeList }/> } />
           <Route exact path="/animes/:id" element={ <ReviewPage 
                                                 animeData={ animeList } 
