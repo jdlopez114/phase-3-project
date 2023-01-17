@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
@@ -8,6 +8,27 @@ function ReviewPage({ animeList, addNewReview, deleteReview, updateReview, revie
 const { id } = useParams();
 const navigate = useNavigate();
 const anime = animeList.find(ani => ani.id === parseInt(id));
+
+useEffect(() => {
+    setReviewList(reviewList)
+}, [reviewList])
+
+function addNewReview( newReview ){
+    fetch(`http://127.0.0.1:9393/reviews`, {
+      method: "POST",
+      headers: { 
+        "Content-Type" : "application/json"
+      }, 
+        body: JSON.stringify( newReview )
+    })
+        .then(r => r.json())
+        .then(data => 
+          // console.log(data))
+          navigate(`/animes/${anime.id}`))
+          .catch(error => (console.log(error)));
+        setReviewList([newReview,...reviewList]) 
+  } 
+  
 
 function deleteReview( id ){
     fetch(`http://127.0.0.1:9393/reviews/${id}`,{
@@ -20,8 +41,30 @@ function deleteReview( id ){
       .then(navigate(`/animes/${anime.id}`))
   }
   
-  const removeReview = id => {
-    setReviewList(reviewList.filter(r =>r.id !== id))
+function removeReview(id) {
+    const updatedReviews = reviewList.filter(r =>r.id !== id)
+    setReviewList(updatedReviews)
+  }
+
+function updateReview( editedReview ){
+    fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
+      method: "PATCH",
+      headers:{
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify( editedReview )
+    })
+    .then(r => r.json())
+    .then(data => {
+      // console.log(data)
+      setReviewList(reviewList.map(r => {
+        if(r.id === data.id){
+          return data
+        } else {
+          return r
+        }
+      }))
+    }); 
   }
   
 return (

@@ -9,6 +9,9 @@ function App() {
 
 const [ animeList, setAnimeList ] = useState([])
 const [ reviewList, setReviewList ] = useState([])
+
+const [ filteredData, setFilteredData ] = useState([])
+
 const navigate = useNavigate();
 
 useEffect(() => {
@@ -22,23 +25,27 @@ useEffect(() => {
   .catch(error => (console.log( error )));
 }, [])
 
-console.log("Reviews:", reviewList)
+// useEffect(() => {
+//   setFilteredData(reviewList)
+// }, [reviewList])
 
-function addNewReview( newReview ){
-  fetch(`http://127.0.0.1:9393/reviews`, {
-    method: "POST",
-    headers: { 
-      "Content-Type" : "application/json"
-    }, 
-      body: JSON.stringify( newReview )
-  })
-      .then(r => r.json())
-      .then(data => 
-        // console.log(data))
-        navigate(`/animes/${data.anime_id}`))
-        .catch(error => (console.log(error)));
-      setReviewList([newReview,...reviewList]) 
-} 
+// console.log("Reviews:", reviewList)
+
+// function addNewReview( newReview ){
+//   fetch(`http://127.0.0.1:9393/reviews`, {
+//     method: "POST",
+//     headers: { 
+//       "Content-Type" : "application/json"
+//     }, 
+//       body: JSON.stringify( newReview )
+//   })
+//       .then(r => r.json())
+//       .then(data => 
+//         // console.log(data))
+//         navigate(`/animes/${data.anime_id}`))
+//         .catch(error => (console.log(error)));
+//       setReviewList([newReview,...reviewList]) 
+// } 
 
 // function deleteReview( id ){
 //   fetch(`http://127.0.0.1:9393/reviews/${id}`,{
@@ -55,26 +62,26 @@ function addNewReview( newReview ){
 //     .catch(error => (console.log(error)));
 // }
 
-function updateReview( editedReview ){
-  fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
-    method: "PATCH",
-    headers:{
-      "Content-Type" : "application/json"
-    },
-    body: JSON.stringify( editedReview )
-  })
-  .then(r => r.json())
-  .then(data => {
-    // console.log(data)
-    setReviewList(reviewList.map(r => {
-      if(r.id === data.id){
-        return data
-      } else {
-        return r
-      }
-    }))
-  }); 
-}
+// function updateReview( editedReview ){
+//   fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
+//     method: "PATCH",
+//     headers:{
+//       "Content-Type" : "application/json"
+//     },
+//     body: JSON.stringify( editedReview )
+//   })
+//   .then(r => r.json())
+//   .then(data => {
+//     // console.log(data)
+//     setReviewList(reviewList.map(r => {
+//       if(r.id === data.id){
+//         return data
+//       } else {
+//         return r
+//       }
+//     }))
+//   }); 
+// }
 
   return (
     <div className="review-app">
@@ -88,9 +95,9 @@ function updateReview( editedReview ){
           <Route exact path="/animes/:id" element={ <ReviewPage 
                                                 animeList={ animeList } 
                                                 setAnimeList={ setAnimeList }
-                                                addNewReview={ addNewReview }
+                                                // addNewReview={ addNewReview }
                                                 // deleteReview={ deleteReview }
-                                                updateReview={ updateReview }
+                                                // updateReview={ updateReview }
                                                 reviewList={ reviewList }
                                                 setReviewList={ setReviewList }
                                               /> 
