@@ -9,8 +9,6 @@ const [ formDataEdit, setFormDataEdit ]  = useState({
     "user_name" : review.user_name,
     "comments" : review.comments,
   })
-  
-console.log("review:", review)
 
 if (formDataEdit.id) {
   return <EditForm 

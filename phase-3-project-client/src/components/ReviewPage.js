@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 import ReviewRow from './ReviewRow';
 
-function ReviewPage({ animeList, addNewReview, deleteReview, updateReview, reviewList, setReviewList, setAnimeList }) {
+function ReviewPage({ animeList, setAnimeList }) {
       
 const { id } = useParams();
 const navigate = useNavigate();
+
 const anime = animeList.find(ani => ani.id === parseInt(id));
 
-useEffect(() => {
-    setReviewList(reviewList)
-}, [reviewList])
-
+// handleAddReview
 function addNewReview( newReview ){
     fetch(`http://127.0.0.1:9393/reviews`, {
       method: "POST",
@@ -26,10 +24,10 @@ function addNewReview( newReview ){
           // console.log(data))
           navigate(`/animes/${anime.id}`))
           .catch(error => (console.log(error)));
-        setReviewList([newReview,...reviewList]) 
+        // setReviewList([newReview,...reviewList]) 
   } 
-  
 
+//handleDeleteReview
 function deleteReview( id ){
     fetch(`http://127.0.0.1:9393/reviews/${id}`,{
       method: "DELETE",
@@ -38,14 +36,22 @@ function deleteReview( id ){
       }
     })
       .then(() => removeReview(id))
-      .then(navigate(`/animes/${anime.id}`))
+    //   .then(() => navigate(`/animes/${currentAnime.id}`))
   }
   
 function removeReview(id) {
-    const updatedReviews = reviewList.filter(r =>r.id !== id)
-    setReviewList(updatedReviews)
+    const updatedAnimeReviews = {...anime, reviews: [...(anime.reviews.filter(rev => rev.id !== id))]}
+    setAnimeList(animeList.map(ani => ani.id === updatedAnimeReviews.id ? updatedAnimeReviews : ani))
+
+    //locate anime object in animeList
+    //delete review located within array of reviews
+    //update anime object with smaller amount of reviews
+    //set animeList with updated anime object and insert into existing array of anime objects 
+
   }
 
+
+//handleUpdateReview
 function updateReview( editedReview ){
     fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
       method: "PATCH",
@@ -55,16 +61,16 @@ function updateReview( editedReview ){
       body: JSON.stringify( editedReview )
     })
     .then(r => r.json())
-    .then(data => {
-      // console.log(data)
-      setReviewList(reviewList.map(r => {
-        if(r.id === data.id){
-          return data
-        } else {
-          return r
-        }
-      }))
-    }); 
+    // .then(data => {
+    // //   console.log(data)
+    //   setReviewList(reviewList.map(r => {
+    //     if(r.id === data.id){
+    //       return data
+    //     } else {
+    //       return r
+    //     }
+    //   }))
+    // }); 
   }
   
 return (

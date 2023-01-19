@@ -20,7 +20,7 @@ function EditForm({ formDataEdit, setFormDataEdit, updateReview}) {
  
   return (
     <div className='review-form-section' >
-        <form noValidate autoComplete="off" className='review-form' onSubmit={ handleUpdateSubmit }>
+        <form noValidate autoComplete="off" className='review-form' onSubmit={ (e) => handleUpdateSubmit (e) }>
             <input
                 placeholder='Edit User Name'
                 value={ formDataEdit.user_name }

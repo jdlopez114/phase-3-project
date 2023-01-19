@@ -8,19 +8,13 @@ import ReviewPage from "./ReviewPage";
 function App() {
 
 const [ animeList, setAnimeList ] = useState([])
-const [ reviewList, setReviewList ] = useState([])
-
-const [ filteredData, setFilteredData ] = useState([])
-
 const navigate = useNavigate();
 
 useEffect(() => {
   fetch(`http://127.0.0.1:9393/animes`)
   .then(r => r.json())
   .then(data => {
-    // console.log(data)
     setAnimeList(data)
-    setReviewList(data.map(dat => dat.reviews))
   })
   .catch(error => (console.log( error )));
 }, [])
@@ -95,11 +89,6 @@ useEffect(() => {
           <Route exact path="/animes/:id" element={ <ReviewPage 
                                                 animeList={ animeList } 
                                                 setAnimeList={ setAnimeList }
-                                                // addNewReview={ addNewReview }
-                                                // deleteReview={ deleteReview }
-                                                // updateReview={ updateReview }
-                                                reviewList={ reviewList }
-                                                setReviewList={ setReviewList }
                                               /> 
                                             }/>
       </Routes>
