@@ -59,6 +59,12 @@ function handleUpdateReview( editedReview ){
       body: JSON.stringify( editedReview )
     })
     .then(r => r.json())
+    .then (data => 
+        // console.log(data)
+        updateReview(data)
+        )
+    .catch(error => (console.log(error)))
+
     // .then(data => {
     // //   console.log(data)
     //   setReviewList(reviewList.map(r => {
@@ -69,6 +75,11 @@ function handleUpdateReview( editedReview ){
     //     }
     //   }))
     // }); 
+  }
+
+  function updateReview(editedRev){
+    const updatedAnimeReviews = {...anime, reviews: [editedRev, ...anime.reviews.filter(rev => rev.id !== editedRev.id)]}
+    setAnimeList(animeList.map(ani => ani.id === updatedAnimeReviews.id ? updatedAnimeReviews : ani))
   }
   
 return (

@@ -1,10 +1,10 @@
 import React from 'react';
 
-function EditForm({ formDataEdit, setFormDataEdit, updateReview}) {
+function EditForm({ formDataEdit, setFormDataEdit, handleUpdateReview}) {
 
   function handleUpdateSubmit(e){
     e.preventDefault()
-    updateReview(formDataEdit)
+    handleUpdateReview(formDataEdit)
     setFormDataEdit({
         "user_name" : "",
         "comments" : "",
