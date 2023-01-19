@@ -43,10 +43,6 @@ function handleDeleteReview( id ){
 function removeReview(id) {
     const updatedAnimeReviews = {...anime, reviews: [...(anime.reviews.filter(rev => rev.id !== id))]}
     setAnimeList(animeList.map(ani => ani.id === updatedAnimeReviews.id ? updatedAnimeReviews : ani))
-    //locate anime object in animeList
-    //delete review located within array of reviews
-    //update anime object with smaller amount of reviews
-    //set animeList with updated anime object and insert into existing array of anime objects 
 }
 
 
@@ -60,21 +56,9 @@ function handleUpdateReview( editedReview ){
     })
     .then(r => r.json())
     .then (data => 
-        // console.log(data)
         updateReview(data)
         )
     .catch(error => (console.log(error)))
-
-    // .then(data => {
-    // //   console.log(data)
-    //   setReviewList(reviewList.map(r => {
-    //     if(r.id === data.id){
-    //       return data
-    //     } else {
-    //       return r
-    //     }
-    //   }))
-    // }); 
   }
 
   function updateReview(editedRev){
