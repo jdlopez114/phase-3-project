@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ReviewForm({ addNewReview, anime }) {
+function ReviewForm({ handleAddReview, anime }) {
 
   const [ formData, setFormData ] = useState ({ 
       "user_name" : "",
@@ -10,7 +10,7 @@ function ReviewForm({ addNewReview, anime }) {
 
   function handleFormSubmit(e){
     e.preventDefault()
-    addNewReview( formData )
+    handleAddReview( formData )
     setFormData({
       "user_name" : "",
       "comments" : "",

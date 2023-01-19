@@ -7,11 +7,9 @@ function ReviewPage({ animeList, setAnimeList }) {
       
 const { id } = useParams();
 const navigate = useNavigate();
-
 const anime = animeList.find(ani => ani.id === parseInt(id));
 
-// handleAddReview
-function addNewReview( newReview ){
+function handleAddReview( newReview ){
     fetch(`http://127.0.0.1:9393/reviews`, {
       method: "POST",
       headers: { 
@@ -19,40 +17,40 @@ function addNewReview( newReview ){
       }, 
         body: JSON.stringify( newReview )
     })
-        .then(r => r.json())
-        .then(data => 
-          // console.log(data))
-          navigate(`/animes/${anime.id}`))
-          .catch(error => (console.log(error)));
-        // setReviewList([newReview,...reviewList]) 
-  } 
+    .then(r => r.json())
+    .then(data => addReview(data))
+    .then(() => navigate(`/animes/${anime.id}`))
+    .catch(error => (console.log(error)))
+  }         
 
-//handleDeleteReview
-function deleteReview( id ){
-    fetch(`http://127.0.0.1:9393/reviews/${id}`,{
+function addReview(review){
+    const updatedSet = {...anime, reviews: [review, ...anime.reviews]}
+    setAnimeList(animeList.map(ani => ani.id === updatedSet.id ? updatedSet : ani))
+}
+
+
+function handleDeleteReview( id ){
+    fetch(`http://127.0.0.1:9393/reviews/${id}`, {
       method: "DELETE",
       headers: { 
         "Content-Type" : "application/json"
       }
     })
-      .then(() => removeReview(id))
-    //   .then(() => navigate(`/animes/${currentAnime.id}`))
-  }
+    .then(() => removeReview(id))
+    .catch(error => (console.log(error)))
+}
   
 function removeReview(id) {
     const updatedAnimeReviews = {...anime, reviews: [...(anime.reviews.filter(rev => rev.id !== id))]}
     setAnimeList(animeList.map(ani => ani.id === updatedAnimeReviews.id ? updatedAnimeReviews : ani))
-
     //locate anime object in animeList
     //delete review located within array of reviews
     //update anime object with smaller amount of reviews
     //set animeList with updated anime object and insert into existing array of anime objects 
+}
 
-  }
 
-
-//handleUpdateReview
-function updateReview( editedReview ){
+function handleUpdateReview( editedReview ){
     fetch(`http://127.0.0.1:9393/reviews/${editedReview.id}`, {
       method: "PATCH",
       headers:{
@@ -93,15 +91,15 @@ return (
         </aside>
         <div className="review-section">
             <h1>Leave Your Review!</h1>
-            <ReviewForm addNewReview={ addNewReview } anime={ anime }/> 
-            { anime?.reviews.map(rev => {
-                    return <ReviewRow 
-                        key={ rev.id } 
-                        review={ rev } 
-                        deleteReview={ deleteReview } 
-                        updateReview={ updateReview } 
-                />
-        })}
+            <ReviewForm handleAddReview={ handleAddReview } anime={ anime }/> 
+                { anime?.reviews.map(rev => {
+                    return <ReviewRow   
+                                key={ rev.id } 
+                                review={ rev } 
+                                handleDeleteReview={ handleDeleteReview } 
+                                handleUpdateReview={ handleUpdateReview } 
+                            />
+                })}
         </div>
     </div>
   );
